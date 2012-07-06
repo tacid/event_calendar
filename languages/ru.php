@@ -13,7 +13,7 @@
 	'event_calendar:manage_event_description' => "Введите детали вашего события. "
 		."Название, место и дата начала обязательны. "
 		."Вы можете нажать на иконки календаря, чтобы установить начальную и конечную даты.",
-	'event_calendar:title_label' => "Начало",
+	'event_calendar:title_label' => "Название",
 	'event_calendar:title_description' => "От одного до четырех слов",
 	'event_calendar:brief_description_label' => "Краткое описание",
 	'event_calendar:brief_description_description' => "Короткая фраза.",
@@ -54,7 +54,10 @@
 	'event_calendar:cancel' => "Отменить",
 	'event_calendar:widget_title' => "Календарь",
 	'event_calendar:widget:description' => "Отображает ваши события.",
-	'event_calendar:num_display' => "Количество событий для отображения",
+	'event_calendar:num_display' => "Количество событий",
+	'event_calendar:events_type' => "Показывать",
+	'event_calendar:personal_events' => "Персональные",
+	'event_calendar:all_events' => "Все активные",
 	'event_calendar:groupprofile' => "Предстоящие события",
 	'event_calendar:view_calendar' => "просмотр календаря",
 	'event_calendar:when_label' => "Когда",

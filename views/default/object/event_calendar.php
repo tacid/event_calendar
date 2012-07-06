@@ -49,9 +49,9 @@ if ($full) {
 	echo $list_body;
 	echo $body;
 	if ($event->long_description) {
-		echo '<p>'.$event->long_description.'</p>';
+		echo '<div class="elgg-output">'.$event->long_description.'</div>';
 	} else {
-		echo '<p>'.$event->description.'</p>';
+		echo '<div class="elgg-output">'.$event->description.'</div>';
 	}
 	if (elgg_get_plugin_setting('add_to_group_calendar', 'event_calendar') == 'yes') {
 		echo elgg_view('event_calendar/forms/add_to_group',array('event' => $event));
