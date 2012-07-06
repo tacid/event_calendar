@@ -739,7 +739,14 @@ function event_calendar_add_personal_events_from_group($event_guid,$group_guid) 
 function event_calendar_remove_personal_event($event_guid,$user_guid) {
 	remove_entity_relationship($user_guid,'personal_event',$event_guid);
 	// also use old method for now
-	$annotations = 	get_annotations($event_guid, "object", "event_calendar", "personal_event", (int) $user_guid, $user_guid);
+        $annotations = elgg_get_annotations(array(
+			'guid'=>$event_guid,
+			'type'=>"object",
+			'subtype'=>"event_calendar",
+			'annotation_name' => "personal_event",
+                        'annotation_value' => (int) $user_guid,
+                        'annotation_owner_guid' => $user_guid)
+        );
 	if ($annotations) {
 		foreach ($annotations as $annotation) {
 			$annotation->delete();
@@ -765,6 +772,31 @@ function event_calendar_get_personal_events_for_user($user_guid,$limit) {
 	));
 
 	$events = array_merge($events_old_way,$events_new_way);
+
+	$final_events = array();
+	if ($events) {
+		$now = time();
+		$one_day = 60*60*24;
+		// don't show events that have been over for more than a day
+		foreach($events as $event) {
+			if (($event->start_date > $now-$one_day) || ($event->end_date && ($event->end_date > $now-$one_day))) {
+				$final_events[] = $event;
+			}
+		}
+	}
+	$sorted = event_calendar_vsort($final_events,'start_date');
+	return array_slice($sorted,0,$limit);
+}
+
+function event_calendar_get_open_events($limit) {
+	$events_new_way = elgg_get_entities_from_relationship(array(
+		'type' => 'object',
+		'subtype' => 'event_calendar',
+		'relationship' => 'open_event',
+		'limit' => 0,
+	));
+
+	$events = $events_new_way;
 
 	$final_events = array();
 	if ($events) {
