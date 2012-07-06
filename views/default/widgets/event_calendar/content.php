@@ -21,7 +21,17 @@
 		
     // Get the events
 
-	$events = event_calendar_get_personal_events_for_user(elgg_get_page_owner_guid(),$num);
+        if(!$vars['entity']->events_type or $vars['entity']->events_type == 'personal_events') {
+            if($vars['entity']->context == 'index') {
+                $events = event_calendar_get_personal_events_for_user(elgg_get_logged_in_user_guid(),$num);
+            } else {
+                $events = event_calendar_get_personal_events_for_user(elgg_get_page_owner_guid(),$num);
+            }
+
+        } else {
+            $now = time(); $day = 60*60*24;
+            $events = event_calendar_get_events_between($now,$now+3650*$day,false,$num);
+        }
 		
 	// If there are any events to view, view them
 	if (is_array($events) && sizeof($events) > 0) {

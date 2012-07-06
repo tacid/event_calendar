@@ -16,6 +16,11 @@ if (!$vars['entity']->num_display) {
 } else {
 	$num_display = $vars['entity']->num_display;
 }
+if (!$vars['entity']->events_type) {
+	$events_type = 'personal_events';
+} else {
+	$events_type = $vars['entity']->events_type;
+}
 ?>
 
 <p>
@@ -31,5 +36,12 @@ if (!$vars['entity']->num_display) {
 			<option value="8" <?php if($num_display == 8) echo "SELECTED"; ?>>8</option>
 			<option value="9" <?php if($num_display == 9) echo "SELECTED"; ?>>9</option>
 			<option value="10" <?php if($num_display == 10) echo "SELECTED"; ?>>10</option>
+		</select>
+		<br/><?php echo elgg_echo("event_calendar:events_type"); ?>:
+		<select name="params[events_type]">
+                <option value="personal_events" <?php if($events_type == 'personal_events') echo "SELECTED"; ?>>
+                        <?php echo elgg_echo("event_calendar:personal_events"); ?></option>
+                <option value="all_events" <?php if($events_type == 'all_events') echo "SELECTED"; ?>>
+                        <?php echo elgg_echo("event_calendar:all_events"); ?></option>
 		</select>
 </p>
