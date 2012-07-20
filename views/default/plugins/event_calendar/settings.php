@@ -79,6 +79,28 @@ $body .= elgg_view('input/radio',array('name'=>'params[listing_format]','value'=
 
 $body .= '<br />';
 
+$event_calendar_repeated_events = elgg_get_plugin_setting('repeated_events', 'event_calendar');
+if (!$event_calendar_repeated_events) {
+	$event_calendar_repeated_events = 'no';
+}
+
+$body .= elgg_echo('event_calendar:settings:repeated_events:title');
+$body .= '<br />';
+$body .= elgg_view('input/radio',array('name'=>'params[repeated_events]','value'=>$event_calendar_repeated_events,'options'=>$yn_options));
+
+$body .= '<br />';
+
+$event_calendar_reminders = elgg_get_plugin_setting('reminders', 'event_calendar');
+if (!$event_calendar_reminders) {
+	$event_calendar_reminders = 'no';
+}
+
+$body .= elgg_echo('event_calendar:settings:reminders:title');
+$body .= '<br />';
+$body .= elgg_view('input/radio',array('name'=>'params[reminders]','value'=>$event_calendar_reminders,'options'=>$yn_options));
+
+$body .= '<br />';
+
 $event_calendar_times = elgg_get_plugin_setting('times', 'event_calendar');
 if (!$event_calendar_times) {
 	$event_calendar_times = 'yes';
@@ -89,6 +111,17 @@ $body .= '<br />';
 $body .= elgg_view('input/radio',array('name'=>'params[times]','value'=>$event_calendar_times,'options'=>$yn_options));
 
 $body .= '<br />';
+
+/*$event_calendar_restricted_times = elgg_get_plugin_setting('restricted_times', 'event_calendar');
+if (!$event_calendar_restricted_times) {
+	$event_calendar_restricted_times = 'no';
+}
+
+$body .= elgg_echo('event_calendar:settings:restricted_times:title');
+$body .= '<br />';
+$body .= elgg_view('input/radio',array('name'=>'params[restricted_times]','value'=>$event_calendar_restricted_times,'options'=>$yn_options));
+
+$body .= '<br />';*/
 
 $event_calendar_time_format = elgg_get_plugin_setting('timeformat', 'event_calendar');
 if (!$event_calendar_time_format) {
@@ -155,6 +188,17 @@ if (!$event_calendar_venue_view) {
 $body .= elgg_echo('event_calendar:settings:venue_view:title');
 $body .= '<br />';
 $body .= elgg_view('input/radio',array('name'=>'params[venue_view]','value'=>$event_calendar_venue_view,'options'=>$yn_options));
+
+$body .= '<br />';
+
+$event_calendar_fewer_fields = elgg_get_plugin_setting('fewer_fields', 'event_calendar');
+if (!$event_calendar_fewer_fields) {
+	$event_calendar_fewer_fields = 'no';
+}
+
+$body .= elgg_echo('event_calendar:settings:fewer_fields:title');
+$body .= '<br />';
+$body .= elgg_view('input/radio',array('name'=>'params[fewer_fields]','value'=>$event_calendar_fewer_fields,'options'=>$yn_options));
 
 $body .= '<br />';
 
@@ -314,7 +358,7 @@ if (!$event_calendar_region_list) {
 
 $body .= elgg_echo('event_calendar:settings:region_list:title');
 $body .= '<br />';
-$body .= elgg_view('event_calendar/input/longtext',array('name'=>'params[region_list]','value'=>$event_calendar_region_list));
+$body .= elgg_view('input/plaintext',array('name'=>'params[region_list]','value'=>$event_calendar_region_list));
 
 $body .= '<br />';
 
@@ -347,7 +391,7 @@ if (!$event_calendar_type_list) {
 
 $body .= elgg_echo('event_calendar:settings:type_list:title');
 $body .= '<br />';
-$body .= elgg_view('event_calendar/input/longtext',array('name'=>'params[type_list]','value'=>$event_calendar_type_list));
+$body .= elgg_view('input/plaintext',array('name'=>'params[type_list]','value'=>$event_calendar_type_list));
 
 $body .= '<br />';
 
@@ -400,5 +444,31 @@ $ical_auth_file_name = elgg_get_plugin_setting('ical_auth_file_name', 'event_cal
 $body .= elgg_echo('event_calendar:ical_auth_file_name:title');
 $body .= '<br />';
 $body .= elgg_view('input/text',array('name'=>'params[ical_auth_file_name]','value'=>$ical_auth_file_name, 'class'=>'event-calendar-ical-auth-setting'));
+
+$body .= '<br /><br />';
+
+$event_calendar_bbb_server_url = elgg_get_plugin_setting('bbb_server_url', 'event_calendar');
+
+$body .= elgg_echo('event_calendar:bbb_server_url');
+$body .= '<br />';
+$body .= elgg_view('input/text', array(
+	'name' => 'params[bbb_server_url]',
+	'value' => $event_calendar_bbb_server_url,
+	'class' => 'text_input',
+));
+
+$body .= '<br /><br />';
+
+$event_calendar_bbb_security_salt = elgg_get_plugin_setting('bbb_security_salt', 'event_calendar');
+
+$body .= elgg_echo('event_calendar:bbb_security_salt');
+$body .= '<br />';
+$body .= elgg_view('input/text', array(
+	'name' => 'params[bbb_security_salt]',
+	'value' => $event_calendar_bbb_security_salt,
+	'class' => 'text_input',
+));
+
+$body .= '<br /><br />';
 
 echo $body;

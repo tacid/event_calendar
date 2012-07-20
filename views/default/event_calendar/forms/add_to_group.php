@@ -72,5 +72,3 @@ if ($add_options || $remove_options) {
 	}
 	echo '</div>';
 }
-	
-?>
