@@ -1515,7 +1515,7 @@ function event_calendar_get_page_content_list($page_type,$container_guid,$start_
 	$menu_options = array(
 		'name' => 'ical',
 		'id' => 'event-calendar-ical-link',
-		'text' => '<img src="'.elgg_get_site_url().'mod/event_calendar/images/ics.png" />',
+		'text' => elgg_view_icon('calendar'),
 		'href' => $url,
 		'title' => elgg_echo('feed:ical'),
 		'priority' => 800,
