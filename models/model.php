@@ -2112,6 +2112,18 @@ function event_calendar_modify_full_calendar($event_guid,$day_delta,$minute_delt
 					$event->end_time += $minute_delta;
 				}
 			}
+			$dow = array('monday','tuesday','wednesday','thursday','friday','saturday','sunday');
+			$week_repeats = array();
+			$weekday_delta = (($day_delta % 7) + 7) % 7; // Imagine delta is -12: ((-12 % 7) + 7 % 7) = +2 (thursdays are saturdays)
+			foreach ($dow as $i => $w) {
+				$v = 'event-calendar-repeating-'.$w.'-value';
+				$new_day = $dow[($i+$weekday_delta)%7];
+				$week_repeats[$new_day] = $event->$v;
+			}
+			foreach ($week_repeats as $w => $value) {
+				$v = 'event-calendar-repeating-'.$w.'-value';
+				$event->$v = $value;
+			}
 			return TRUE;
 		}
 	}
