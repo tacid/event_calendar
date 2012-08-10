@@ -1481,29 +1481,24 @@ function event_calendar_get_page_content_list($page_type,$container_guid,$start_
 		elgg_push_context('groups');
 		elgg_set_page_owner_guid($container_guid);
 		$user_guid = elgg_get_logged_in_user_guid();
-		// TODO - ideally avoid the check on the event_poll plugin, perhaps by having event_poll remove the menu item
 		if(event_calendar_can_add($container_guid)) {
-			if (!elgg_plugin_exists('event_poll')) {
-				elgg_register_menu_item('title', array(
-					'name' => 'add',
-					'href' => "event_calendar/add/".$container_guid,
-					'text' => elgg_echo('event_calendar:add'),
-					'class' => 'elgg-button elgg-button-action',
-				));
-			}
+			elgg_register_menu_item('title', array(
+				'name' => 'add',
+				'href' => "event_calendar/add/".$container_guid,
+				'text' => elgg_echo('event_calendar:add'),
+				'class' => 'elgg-button elgg-button-action event-calendar-button-add',
+			));
 		}
 	} else {
 		elgg_push_breadcrumb(elgg_echo('item:object:event_calendar'));
 		$user_guid = elgg_get_logged_in_user_guid();
 		if(event_calendar_can_add($container_guid)) {
-			if (!elgg_plugin_exists('event_poll')) {
-				elgg_register_menu_item('title', array(
-					'name' => 'add',
-					'href' => "event_calendar/add",
-					'text' => elgg_echo('event_calendar:add'),
-					'class' => 'elgg-button elgg-button-action',
-				));
-			}
+			elgg_register_menu_item('title', array(
+				'name' => 'add',
+				'href' => "event_calendar/add",
+				'text' => elgg_echo('event_calendar:add'),
+				'class' => 'elgg-button elgg-button-action event-calendar-button-add',
+			));
 		}
 	}	
 
@@ -1520,7 +1515,7 @@ function event_calendar_get_page_content_list($page_type,$container_guid,$start_
 	$menu_options = array(
 		'name' => 'ical',
 		'id' => 'event-calendar-ical-link',
-		'text' => '<img src="'.elgg_get_site_url().'mod/event_calendar/images/ics.png" />',
+		'text' => elgg_view_icon('calendar'),
 		'href' => $url,
 		'title' => elgg_echo('feed:ical'),
 		'priority' => 800,
@@ -1884,7 +1879,7 @@ function event_calendar_get_page_content_view($event_guid,$light_box = FALSE) {
 		}
 
 		elgg_push_breadcrumb($event->title);
-		$content = elgg_view_entity($event, array('full_view' => true));
+		$content = elgg_view_entity($event, array('full_view' => true,'light_box'=>$light_box));
 		//check to see if comment are on - TODO - add this feature to all events
 		if ($event->comments_on != 'Off') {
 			$content .= elgg_view_comments($event);
