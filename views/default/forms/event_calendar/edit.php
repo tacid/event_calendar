@@ -87,10 +87,18 @@ $body .= elgg_view("input/text",array('name' => 'venue','class'=>'event-calendar
 $body .= '</p>';
 $body .= '<p class="event-calendar-description">'.$prefix['venue'].elgg_echo('event_calendar:venue_description').'</p>';
 
-$body .= '<p><label>'.elgg_echo("event_calendar:brief_description_label").'</label>';
-$body .= elgg_view("input/text",array('name' => 'description','class'=>'event-calendar-medium-text','value'=>$brief_description));
-$body .= '</p>';
-$body .= '<p class="event-calendar-description">'.$prefix['brief_description'].elgg_echo('event_calendar:brief_description_description').'</p>';
+if ($event_calendar_fewer_fields != 'yes') {
+	$body .= '<p><label>'.elgg_echo("event_calendar:brief_description_label").'</label>';
+	$body .= elgg_view("input/text",array('name' => 'description','class'=>'event-calendar-medium-text','value'=>$brief_description));
+	$body .= '</p>';
+	$body .= '<p class="event-calendar-description">'.$prefix['brief_description'].elgg_echo('event_calendar:brief_description_description').'</p>';
+	
+} else {
+	$body .= '<p><label>'.elgg_echo("event_calendar:long_description_label").'</label>';
+	$body .= elgg_view("input/longtext",array('name' => 'long_description','class'=>'event-calendar-long-text','value'=>$long_description));
+	$body .= '</p>';
+	$body .= '<p class="event-calendar-description">'.$prefix['long_description'].elgg_echo('event_calendar:long_description_description').'</p>';
+}
 
 $body .= '<p><label>'.elgg_echo("event_calendar:event_tags_label").'</label>';
 $body .= elgg_view("input/tags",array('name' => 'tags','class'=>'event-calendar-medium-text','value'=>$event_tags));
