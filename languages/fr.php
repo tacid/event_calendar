@@ -122,4 +122,3 @@ $language = array (
   'event_calendar:river:the_event' => 'un événement intitulé',
 );
 add_translation("fr", $language);
-?>

@@ -1,6 +1,6 @@
 <?php
 $language = array (
-  'item:object:event_calendar' => 'Calendario de eventos',
+  'item:object:event_calendar' => 'Calendario',
   'event_calendar:new_event' => 'Nuevo evento',
   'event_calendar:no_such_event_edit_error' => 'Error: No existe tal evento o usted no tiene autorización para editarlo.',
   'event_calendar:add_event_title' => 'Agregar evento',
@@ -10,7 +10,7 @@ $language = array (
   'event_calendar:title_description' => 'Una a cuatro palabras',
   'event_calendar:brief_description_label' => 'Descripción breve',
   'event_calendar:brief_description_description' => 'Una frase corta.',
-  'event_calendar:venue_label' => 'Sede',
+  'event_calendar:venue_label' => 'Lugar',
   'event_calendar:venue_description' => '¿Dónde se llevará a cabo este evento?',
   'event_calendar:start_date_label' => 'Fecha de inicio',
   'event_calendar:start_date_description' => '¿Cuándo comenzará este evento?',
@@ -34,7 +34,7 @@ $language = array (
   'event_calendar:add_event_response' => 'Su evento ha sido agregado.',
   'event_calendar:manage_event_error' => 'Error: Hubo un error al guardar su evento. Por favor asegúrese que todos los campos requeridos hayan sido proporcionados.',
   'event_calendar:error_nosuchevent' => 'Error: no existe tal evento.',
-  'event_calendar:show_events_title' => 'Calendario del evento',
+  'event_calendar:show_events_title' => 'Calendario',
   'event_calendar:day_label' => 'Día',
   'event_calendar:week_label' => 'Semana',
   'event_calendar:month_label' => 'Mes',
@@ -42,7 +42,7 @@ $language = array (
   'event_calendar:new' => 'Agregar evento',
   'event_calendar:submit' => 'Enviar',
   'event_calendar:cancel' => 'Cancelar',
-  'event_calendar:widget_title' => 'Calendario del evento',
+  'event_calendar:widget_title' => 'Calendario',
   'event_calendar:widget:description' => 'Exponer sus eventos.',
   'event_calendar:num_display' => 'Número de eventos expuestos',
   'event_calendar:groupprofile' => 'Eventos venideros',
@@ -74,7 +74,7 @@ $language = array (
   'event_calendar:settings:venue_view:title' => 'Mostrar sede en vista rápida (listados de eventos)',
   'event_calendar:settings:yes' => 'sí',
   'event_calendar:settings:no' => 'no',
-  'event_calendar:settings:site_calendar:title' => 'Sitio del calendario',
+  'event_calendar:settings:site_calendar:title' => 'Calendario del sitio',
   'event_calendar:settings:site_calendar:admin' => 'sí, solamente si administradores pueden anunciar eventos',
   'event_calendar:settings:site_calendar:loggedin' => 'sí, cualquier usuario registrado puede anunciar un evento',
   'event_calendar:settings:group_calendar:title' => 'Calendarios de grupo',
@@ -121,4 +121,3 @@ $language = array (
   'event_calendar:river:the_event' => 'un evento titulado',
 );
 add_translation("es", $language);
-?>

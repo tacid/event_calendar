@@ -2,7 +2,7 @@
 
 	$english = array(
 	
-	'item:object:event_calendar' => "Event calendar",
+	'item:object:event_calendar' => "Calendar",
 	'tag_names:event_tags' => "Tags",
 	'event_calendar:optional' => "Optional.",
 	'event_calendar:required' => "Required.",
@@ -17,7 +17,7 @@
 	'event_calendar:title_description' => "One to four words",
 	'event_calendar:brief_description_label' => "Description",
 	'event_calendar:brief_description_description' => "A short phrase.",
-	'event_calendar:venue_label' => "Venue",
+	'event_calendar:venue_label' => "Where",
 	'event_calendar:venue_description' => "Where will this event be held?",
 	'event_calendar:start_date_label' => "Start date",
 	'event_calendar:start_date_description'	=> "When will this event start?",
@@ -44,7 +44,7 @@
 	'event_calendar:manage_event_error' => "Error: There was an error in saving your event. "
 			."Please make sure that you have provided the required fields.",
 	'event_calendar:error_nosuchevent' => "Error: there is no such event.",
-	'event_calendar:show_events_title' => "Event calendar",
+	'event_calendar:show_events_title' => "Calendar",
 	'event_calendar:day_label' => "Day",
 	'event_calendar:week_label' => "Week",
 	'event_calendar:month_label' => "Month",
@@ -52,7 +52,7 @@
 	'event_calendar:new' => "Add event",
 	'event_calendar:submit' => "Save and Continue",
 	'event_calendar:cancel' => "Cancel",
-	'event_calendar:widget_title' => "Event calendar",
+	'event_calendar:widget_title' => "Calendar",
 	'event_calendar:widget:description' => "Displays your events.",
 	'event_calendar:num_display' => "Number of events to display",
 	'event_calendar:groupprofile' => "Upcoming events",
@@ -121,7 +121,7 @@
 	'event_calendar:region_filter_by_label' => "Filter by region: ",
 	'event_calendar:settings:first_date:title' => "First allowable date (in YYYY-MM-DD format)",
 	'event_calendar:settings:last_date:title' => "Last allowable date (in YYYY-MM-DD format)",
-	'event_calendar:enable_event_calendar' => "Enable group event calendar",
+	'event_calendar:enable_event_calendar' => "Enable group calendar",
 	'event_calendar:no_events_found' => "No events found.",
 	'event_calendar:mine' => "Mine",
 	'event_calendar:feature' => "Feature",
@@ -355,5 +355,3 @@ You can visit the event page here:
 	);
 					
 	add_translation("en",$english);
-
-?>
