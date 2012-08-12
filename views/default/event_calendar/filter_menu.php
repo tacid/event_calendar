@@ -30,9 +30,6 @@ if (elgg_is_logged_in()) {
 		'selected' => ($filter_context == 'friends'),
 		'priority' => 400,
 	);
-	$text_bit = '<li class="event-calendar-filter-menu-show-only">'.elgg_echo('event_calendar:show_only').'</li>';
-} else {
-	$text_bit = '';
 }
 
 $tab_rendered = array();
@@ -66,7 +63,6 @@ $menu = <<<__MENU
 <ul class="elgg-menu elgg-menu-filter elgg-menu-hz elgg-menu-filter-default">
 	{$tab_rendered['open']}
 	{$tab_rendered['all']}
-	$text_bit
 	{$tab_rendered['mine']}
 	{$tab_rendered['friend']}
 </ul>
