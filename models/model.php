@@ -1649,7 +1649,7 @@ function event_calendar_prepare_edit_form_vars($event = NULL, $page_type = '', $
 	if ($page_type == 'schedule') {
 		$values['schedule_type'] = 'poll';
 	} else {
-		$values['schedule_type'] = 'fixed';
+		$values['schedule_type'] = 'all_day';
 	}
 
 	if ($event) {
