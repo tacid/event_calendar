@@ -3,6 +3,8 @@ elgg_load_js('elgg.full_calendar');
 elgg_load_js('lightbox');
 elgg_load_css('lightbox');
 
+$timeformat = elgg_get_plugin_setting('timeformat', 'event_calendar') == 24 ? 'H(:mm)' : 'h(:mm)t';
+
 // TODO: is there an easy way to avoid embedding JS?
 ?>
 <script>
@@ -187,7 +189,8 @@ fullcalendarInit = function() {
 				month: elgg.echo('event_calendar:month_label'),
 				week: elgg.echo('event_calendar:week_label'),
 				day: elgg.echo('event_calendar:day_label')
-			}
+			},
+			timeFormat: "<?php echo $timeformat; ?>",
 		});
 	}
 	
