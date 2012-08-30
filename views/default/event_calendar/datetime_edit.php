@@ -30,7 +30,7 @@ if ($event_calendar_times != 'no') {
 		$body .= elgg_view("input/timepicker",array('name' => 'end_time','value'=>$vars['end_time']));
 		$body .= '</span>';
 	}
-	$body .= '</p></span>';
+	$body .= '</p>';
 } else {
 
 	$body .= '<p><label>'.elgg_echo("event_calendar:start_date_label").'<br />';

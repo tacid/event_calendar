@@ -291,6 +291,7 @@ You can manage calendar requests for this event here:
 	'event_calendar:calendar_label' => "Calendar",
 	'event_calendar:calendar_description' => "Calendar for this event.",
 	'event_calendar:are_you_sure' => "Are you sure about this change?",
+	'event_calendar:basic:header' => "Basic info",
 	'event_calendar:schedule:header' => "Schedule",
 	'event_calendar:permissions:header' => "Permissions",
 	'event_calendar:read_access' => "Read access",

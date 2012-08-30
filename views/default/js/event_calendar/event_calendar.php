@@ -10,7 +10,7 @@ elgg.event_calendar.init = function () {
 	$('.event-calendar-repeating-unselected').live('click',elgg.event_calendar.handleRepeatingSelect);
 	$('.event-calendar-repeating-selected').live('click',elgg.event_calendar.handleRepeatingUnselect);
 	$('#event-calendar-edit').submit(elgg.event_calendar.handleEditFormSubmit);
-	$('#event-calendar-edit-schedule-type').click(elgg.event_calendar.handleScheduleType);
+	$('input.elgg-input-radio[name="schedule_type"]').click(elgg.event_calendar.handleScheduleType);
 	elgg.event_calendar.handleScheduleType();
 
 	var all_day_field = $('[name="all_day"][type="checkbox"]');
@@ -24,7 +24,7 @@ elgg.event_calendar.init = function () {
 }
 
 elgg.event_calendar.handleScheduleType = function(e) {
-	var st = $('#event-calendar-edit-schedule-type:checked').val();
+	var st = $('input.elgg-input-radio[name="schedule_type"]:checked').val();
 	if (st == 'poll') {
 		$(".event-calendar-edit-date-wrapper").hide();
 		$(".event-calendar-edit-reminder-wrapper").hide();

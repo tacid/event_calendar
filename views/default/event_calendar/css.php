@@ -175,39 +175,12 @@ li.event-calendar-filter-menu-show-only {
 	margin-right: 10px;
 }
 
-.event-calendar-medium-text {
-	width: 500px !important;
+fieldset > legend {
+	font-weight: bold;
+	font-size: 1.2em;
+	line-height: 1.1em;
+	padding-bottom: 5px;
 }
-
-.event-calendar-edit-form-block label {
-	float: left;
-	width: 90px;
-	margin-top: 5px;
-}
-
-.event-calendar-long-text {
-	width: 500px !important;
-}
-
-.event-calendar-edit-form-other-block .mceLayout  {
-	width: 500px !important;
-}
-
-.event-calendar-edit-form {
-	background-color: #FFFFFF;
-}
-
-.event-calendar-edit-form-block {
-	width: 90%;
-	background-color: #DDDDDD;
-	border-width:1px;
-	border-style:solid;
-	border-color:#bfbfbf;
-	padding: 5px;
-	margin-bottom: 10px;
-	clear: both;
-}
-
 .event-calendar-repeating-wrapper {
 	padding: 0;
 	margin-top: 5px;

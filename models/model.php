@@ -1541,7 +1541,6 @@ function event_calendar_get_page_content_edit($page_type,$guid,$start_date='') {
 	elgg_load_js('elgg.event_calendar');
 	$vars = array();
 	$vars['id'] = 'event-calendar-edit';
-	$vars['name'] = 'event_calendar_edit';
 	// just in case a feature adds an image upload
 	$vars['enctype'] = 'multipart/form-data';
 
