@@ -1519,13 +1519,22 @@ function event_calendar_get_page_content_list($page_type,$container_guid,$start_
 		'href' => $url,
 		'title' => elgg_echo('feed:ical'),
 		'priority' => 800,
+		'rel' => 'popup',
 	);
 	$menu_item = ElggMenuItem::factory($menu_options);
 	elgg_register_menu_item('extras', $menu_item);
 
 	$body = elgg_view_layout("content", $params);
+	$body .= elgg_view_module('popup', elgg_echo('feed:ical'), elgg_echo('event_calendar:ical_popup_message') . elgg_view('output/url', array(
+		'href' => $url,
+		'text' => elgg_echo('export'),
+		'class' => 'elgg-button elgg-button-action',
+	)), array(
+		'id' => 'event-calendar-ical',
+		'class' => 'event-calendar-ical hidden',
+	));
 
-	return elgg_view_page($title,$body);
+	return elgg_view_page($title, $body);
 }
 
 function event_calendar_get_page_content_edit($page_type,$guid,$start_date='') {

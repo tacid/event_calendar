@@ -38,6 +38,10 @@ ul#calendarmenu li a:hover, ul#calendarmenu li.sys_selected a{
 	background: <?php echo $highlight_colour; ?>;
 }
 
+.event-calendar-ical {
+	width: 200px;
+}
+
 td.ui-datepicker-unselectable {
 	background-color: #FFFFFF !important;
 	color: #888888 !important;

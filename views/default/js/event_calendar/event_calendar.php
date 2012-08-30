@@ -96,9 +96,8 @@ elgg.event_calendar.handleRegionChange = function(e) {
 }
 
 elgg.event_calendar.handleIcalPopup = function(e) {
-	var message = elgg.echo('event_calendar:ical_popup_message')+"\n"+this.href;
-	alert(message);
-	return false;
+	this.href = '#event-calendar-ical';
+	e.preventDefault();
 }
 
 elgg.event_calendar.handlePagedPersonalCalendarToggle = function() {
