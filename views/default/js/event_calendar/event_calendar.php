@@ -21,6 +21,11 @@ elgg.event_calendar.init = function () {
 		$('#event-calendar-end-time-wrapper').attr('disabled','disabled');
 	}
 	all_day_field.change(elgg.event_calendar.handleAllDayField);
+	
+	$('.elgg-input-date[name="start_date"], .elgg-input-date[name="end_date"]').datepicker({
+		numberOfMonths: 3,
+		onSelect: elgg.event_calendar.handleDateRangeSelect,
+	});
 }
 
 elgg.event_calendar.handleScheduleType = function(e) {
@@ -58,6 +63,14 @@ elgg.event_calendar.handleAllDayField = function(e) {
 		field.removeAttr('disabled');
 	} else {
 		field.attr('disabled','disabled');
+	}
+}
+
+elgg.event_calendar.handleDateRangeSelect = function(selectedDate) {
+	if (this.name == 'start_date') {
+		$('.elgg-input-date[name="end_date"]').datepicker("option", "minDate", selectedDate);
+	} else {
+		$('.elgg-input-date[name="start_date"]').datepicker("option", "maxDate", selectedDate);
 	}
 }
 

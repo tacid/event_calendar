@@ -8,20 +8,17 @@ if ($event_calendar_times != 'no') {
 	if ($event_calendar_hide_end != 'yes') {
 		$body .= '<p><label>'.elgg_echo('event_calendar:from_label').'</label>';
 	}
-	$body .= elgg_view("event_calendar/input/date_local",array(
-		//'timestamp'=>TRUE, 
-		'autocomplete'=>'off',
+	$body .= elgg_view("input/date", array(
 		'class'=>'event-calendar-compressed-date',
 		'name' => 'start_date',
-		'value'=>$vars['start_date']));
+		'value'=>$vars['start_date'],
+	));
 	$body .= '<span id="event-calendar-start-time-wrapper">';
 	$body .= elgg_view("input/timepicker",array('name' => 'start_time','value'=>$vars['start_time']));
 	$body .= '</span>';
 	if ($event_calendar_hide_end != 'yes') {
 		$body .= '</p><p id="event-calendar-to-time-wrapper"><label>'.elgg_echo('event_calendar:to_label').'</label>';
-		$body .= elgg_view("event_calendar/input/date_local",array(
-			//'timestamp'=>TRUE,
-			'autocomplete'=>'off',
+		$body .= elgg_view("input/date", array(
 			'class'=>'event-calendar-compressed-date',
 			'name' => 'end_date',
 			'value'=>$vars['end_date'],

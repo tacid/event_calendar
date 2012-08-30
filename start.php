@@ -28,6 +28,8 @@ function event_calendar_init() {
 	// Register granular notification for this type
 	register_notification_object('object', 'event_calendar', elgg_echo('event_calendar:new_event'));
 		
+	elgg_extend_view('css/elements/forms', 'css/elements/forms/datepicker_multi');
+	
 	// Set up site menu
 	$site_calendar = elgg_get_plugin_setting('site_calendar', 'event_calendar');
 	if (!$site_calendar || $site_calendar != 'no') {
