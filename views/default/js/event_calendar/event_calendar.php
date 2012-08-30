@@ -23,6 +23,7 @@ elgg.event_calendar.init = function () {
 	all_day_field.change(elgg.event_calendar.handleAllDayField);
 	
 	$('.elgg-input-date[name="start_date"], .elgg-input-date[name="end_date"]').datepicker({
+		dateFormat: 'yy-mm-dd',
 		numberOfMonths: 3,
 		onSelect: elgg.event_calendar.handleDateRangeSelect,
 	});
