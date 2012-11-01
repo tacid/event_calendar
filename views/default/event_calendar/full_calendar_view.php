@@ -157,7 +157,7 @@ handleViewDisplay = function(view) {
 fullcalendarInit = function() {	
 	
 	var loadFullCalendar = function() {
-		var locale = $.datepicker.regional[elgg.config.language];
+		var locale = $.datepicker.regional[elgg.get_language()];
 		if (!locale) {
 			locale = $.datepicker.regional[''];
 		}
