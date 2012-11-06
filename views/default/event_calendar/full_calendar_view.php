@@ -1,7 +1,5 @@
 <?php
 elgg_load_js('elgg.full_calendar');
-elgg_load_js('lightbox');
-elgg_load_css('lightbox');
 
 $timeformat = elgg_get_plugin_setting('timeformat', 'event_calendar') == 24 ? 'H(:mm)' : 'h(:mm)t';
 
@@ -13,16 +11,8 @@ var goToDateFlag = 0;
 
 handleEventClick = function(event) {
     if (event.url) {
-        if (event.is_event_poll) {
-        	window.location.href = event.url;
-        } else {            
-			if ($.fancybox) {
-				$.fancybox({'href': event.url});
-			} else if ($.colorbox) {
-				$.colorbox({'href': event.url});
-			}
-        }
-        return false;
+        window.location.href = event.url;
+        event.preventDefault();
     }
 };
 

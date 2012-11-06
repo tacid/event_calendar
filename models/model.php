@@ -1504,7 +1504,7 @@ function event_calendar_get_page_content_list($page_type,$container_guid,$start_
 
 	$params = event_calendar_generate_listing_params($page_type,$container_guid,$start_date,$display_mode,$filter,$region);
 	
-	$url = full_url();
+	$url = current_page_url();
 	if (substr_count($url, '?')) {
 		$url .= "&view=ical";
 	} else {
@@ -2183,7 +2183,7 @@ function event_calendar_get_page_content_fullcalendar_events($start_date,$end_da
 			} else {
 				$event_item['id'] = $event->guid;
 				$event_item['is_event_poll'] = FALSE;
-				$event_item['url'] = elgg_get_site_url().'event_calendar/view_light_box/'.$event->guid;
+				$event_item['url'] = elgg_get_site_url().'event_calendar/view/'.$event->guid;
 			}
 		
 			$event_array[] = $event_item;
