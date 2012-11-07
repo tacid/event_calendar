@@ -106,11 +106,11 @@ function event_calendar_set_event_from_form($event_guid,$group_guid) {
 		//$event->munged_start_date_string = $start_date_text." ".date_default_timezone_get();*/
 		
 		// TODO: is the timezone bit necessary?
-		$event->start_date = strtotime($start_date_text." ".date_default_timezone_get());
+		$event->start_date = strtotime($start_date_text." GMT");
 		$end_date_text = trim(get_input('end_date',''));
 		//$event->original_end_date = get_input('end_date');
 		if ($end_date_text) {	
-			$event->end_date = strtotime($end_date_text." ".date_default_timezone_get());
+			$event->end_date = strtotime($end_date_text." GMT");
 			//$event->munged_end_date_string = $end_date_text." ".date_default_timezone_get();
 		} else {
 			$event->end_date = '';
