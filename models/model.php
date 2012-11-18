@@ -1842,7 +1842,7 @@ function event_calendar_generate_listing_params($page_type,$container_guid,$orig
 	);
 
 	$content = elgg_view('event_calendar/show_events', $vars);
-	if ($page_type == 'owner') {
+	if ($page_type == 'group') {
 		$filter_override = '';
 	} else {
 		$filter_override = elgg_view('event_calendar/filter_menu',$vars);
