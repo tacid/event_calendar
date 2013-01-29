@@ -11,6 +11,7 @@
 	 * @link http://elgg.org/
 	 */
 
+        elgg_load_library('elgg:event_calendar');
 	$title = $vars['entity']->title;
 	
 	$event_items = event_calendar_get_formatted_full_items($vars['entity']);
