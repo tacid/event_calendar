@@ -55,9 +55,9 @@ if ($full) {
 	echo $list_body;
 	echo $body;
 	if ($event->long_description) {
-		echo '<p>'.$event->long_description.'</p>';
+		echo '<div class="elgg-output">'.$event->long_description.'</div>';
 	} else {
-		echo '<p>'.$event->description.'</p>';
+		echo '<div class="elgg-output">'.$event->description.'</div>';
 	}
 	if ($vars['light_box'] == TRUE) {
 		$event_calendar_add_users = elgg_get_plugin_setting('add_users', 'event_calendar');
