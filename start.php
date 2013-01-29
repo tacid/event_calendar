@@ -16,6 +16,8 @@ elgg_register_event_handler('init','system','event_calendar_init');
 function event_calendar_init() {
 
 	elgg_register_library('elgg:event_calendar', elgg_get_plugins_path() . 'event_calendar/models/model.php');
+	
+	elgg_register_plugin_hook_handler('cron', 'fiveminute', 'event_calendar_handle_reminders_cron',400);
 		
 	// Register a page handler, so we can have nice URLs
 	elgg_register_page_handler('event_calendar','event_calendar_page_handler');
@@ -26,6 +28,8 @@ function event_calendar_init() {
 	// Register granular notification for this type
 	register_notification_object('object', 'event_calendar', elgg_echo('event_calendar:new_event'));
 		
+	elgg_extend_view('css/elements/forms', 'css/elements/forms/datepicker_multi');
+	
 	// Set up site menu
 	$site_calendar = elgg_get_plugin_setting('site_calendar', 'event_calendar');
 	if (!$site_calendar || $site_calendar != 'no') {
@@ -64,7 +68,7 @@ function event_calendar_init() {
 	elgg_extend_view('css/elgg', 'event_calendar/css');
 	
 	$event_calendar_listing_format = elgg_get_plugin_setting('listing_format', 'event_calendar');
-	if ($event_calendar_listing_format == 'full') {
+	if (elgg_is_active_plugin('event_poll') || ($event_calendar_listing_format == 'full')) {
 		elgg_extend_view('css/elgg', 'fullcalendar/css');
 		$plugin_js = elgg_get_simplecache_url('js', 'event_calendar/fullcalendar');
 		elgg_register_js('elgg.full_calendar', $plugin_js);
@@ -108,7 +112,7 @@ function event_calendar_init() {
 	elgg_register_action("event_calendar/remove_from_group_members","$action_path/remove_from_group_members.php");
 	elgg_register_action("event_calendar/manage_subscribers","$action_path/manage_subscribers.php");
 	elgg_register_action("event_calendar/modify_full_calendar","$action_path/modify_full_calendar.php");
-
+	elgg_register_action("event_calendar/join_conference","$action_path/join_conference.php");
 }
 
 /**
@@ -188,6 +192,7 @@ function event_calendar_page_handler($page) {
 		case 'manage_users':
 			echo event_calendar_get_page_content_manage_users($page[1]);
 			break;
+		case 'schedule':
 		case 'add':
 			if (isset($page[1])) {
 				group_gatekeeper();
@@ -196,7 +201,7 @@ function event_calendar_page_handler($page) {
 				gatekeeper();
 				$group_guid = 0;
 			}
-			echo event_calendar_get_page_content_edit($page_type,$group_guid);
+			echo event_calendar_get_page_content_edit($page_type,$group_guid,$page[2]);
 			break;
 		case 'edit':
 			gatekeeper();
@@ -265,6 +270,9 @@ function event_calendar_page_handler($page) {
 			gatekeeper();
 			echo event_calendar_get_page_content_review_requests($page[1]);
 			break;
+		case 'get_fullcalendar_events':
+			echo event_calendar_get_page_content_fullcalendar_events($page[1],$page[2],$page[3],$page[4]);
+			break;
 		default:
 			return FALSE;
 	}
@@ -283,6 +291,16 @@ function event_calendar_entity_menu_setup($hook, $type, $return, $params) {
 	$handler = elgg_extract('handler', $params, false);
 	if ($handler != 'event_calendar') {
 		return $return;
+	}
+	if (elgg_is_active_plugin('event_poll') && $entity->canEdit() && $entity->schedule_type == 'poll') {
+		$options = array(
+			'name' => 'schedule',
+			'text' => elgg_echo('event_poll:schedule_button'),
+			'title' => elgg_echo('event_poll:schedule_button'),
+			'href' => 'event_poll/vote/'.$entity->guid,
+			'priority' => 150,
+		);
+		$return[] = ElggMenuItem::factory($options);
 	}
 	$user_guid = elgg_get_logged_in_user_guid();
 	if ($user_guid) {
@@ -364,4 +382,33 @@ function event_calendar_entity_menu_prepare($hook, $type, $return, $params) {
 	}	
 	
 	return $return;
+}
+
+function event_calendar_handle_join($event, $object_type, $object) {
+	elgg_load_library('elgg:event_calendar');
+	$group = $object['group'];
+	$user = $object['user'];
+	$user_guid = $user->getGUID();
+	$events = event_calendar_get_events_for_group($group->getGUID());
+	foreach ($events as $event) {
+		$event_id = $event->getGUID();
+		event_calendar_add_personal_event($event_id,$user_guid);
+	}
+}
+
+function event_calendar_handle_leave($event, $object_type, $object) {
+	elgg_load_library('elgg:event_calendar');
+	$group = $object['group'];
+	$user = $object['user'];
+	$user_guid = $user->getGUID();
+	$events = event_calendar_get_events_for_group($group->getGUID());
+	foreach ($events as $event) {
+		$event_id = $event->getGUID();
+		event_calendar_remove_personal_event($event_id,$user_guid);
+	}
+}
+
+function event_calendar_handle_reminders_cron() {
+	elgg_load_library('elgg:event_calendar');
+	event_calendar_queue_reminders();
 }

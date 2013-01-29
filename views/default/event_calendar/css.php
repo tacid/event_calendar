@@ -38,6 +38,10 @@ ul#calendarmenu li a:hover, ul#calendarmenu li.sys_selected a{
 	background: <?php echo $highlight_colour; ?>;
 }
 
+.event-calendar-ical {
+	width: 200px;
+}
+
 td.ui-datepicker-unselectable {
 	background-color: #FFFFFF !important;
 	color: #888888 !important;
@@ -171,8 +175,90 @@ li.event-calendar-filter-menu-show-only {
 	margin-right: 10px;
 }
 
-.event-calendar-date-time-setter label {
-	float: left;
-	width: 50px;
+fieldset > legend {
+	font-weight: bold;
+	font-size: 1.2em;
+	line-height: 1.1em;
+	padding-bottom: 5px;
+}
+.event-calendar-repeating-wrapper {
+	padding: 0;
 	margin-top: 5px;
+}
+.event-calendar-repeating-unselected {
+	font-size: 16px;
+	font-weight: bold;
+	color: #DDDDDD;
+	background-color: #AAAAAA;
+	border: 1px solid #444444;
+	padding: 5px;
+	width: 25px;
+	text-align: center;
+	display: inline-block;
+	margin: 0;
+}
+
+.event-calendar-repeating-unselected:hover {
+	text-decoration: none;
+}
+
+.event-calendar-repeating-selected {
+	font-size: 16px;
+	font-weight: bold;
+	color: #000000;
+	background-color: #FFFFFF;
+	border: 1px solid #000000;
+	padding: 5px;
+	width: 25px;
+	text-align: center;
+	display: inline-block;
+	margin: 0;
+}
+
+.event-calendar-repeating-selected:hover {
+	text-decoration: none;
+	color: #CCCCCC;
+}
+
+.event-calendar-edit-form-schedule-block ul.elgg-vertical li {
+	display: block !important;
+	clear: both;
+}
+
+.event-calendar-edit-form-block ul.elgg-vertical li label {
+	font-weight: normal;
+	width: 500px;
+}
+
+.event-calendar-edit-form-block h2 {
+	font-size: 18px;
+	color: #000000;
+}
+
+.event-calendar-edit-date-wrapper {
+	clear: both;
+	margin-left: 20px;
+	display: none;
+}
+
+.event-calendar-edit-reminder-wrapper {
+	margin-top: 10px;
+	display: none;
+}
+
+.event-calendar-edit-form-membership-block, .event-calendar-edit-form-share-block {
+	display: none;
+}
+
+.event-calendar-description {
+	display: none;
+}
+
+.event-calendar-edit-bottom {
+	clear: both;
+	margin-bottom: 5px;
+}
+
+.event-calendar-date-selected {
+	background-color: #DDDDFF;
 }

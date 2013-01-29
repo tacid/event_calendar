@@ -15,19 +15,22 @@ $tabs = array(
 		'selected' => ($filter_context == 'all'),
 		'priority' => 200,
 	),
-	'mine' => array(
+);
+
+if (elgg_is_logged_in()) {
+	$tabs ['mine'] = array(
 		'text' => elgg_echo('event_calendar:show_mine'),
 		'href' => "$url_start/mine",
 		'selected' => ($filter_context == 'mine'),
 		'priority' => 300,
-	),
-	'friend' => array(
+	);
+	$tabs['friend'] = array(
 		'text' => elgg_echo('event_calendar:show_friends'),
 		'href' =>  "$url_start/friends",
 		'selected' => ($filter_context == 'friends'),
 		'priority' => 400,
-	),
-);
+	);
+}
 
 $tab_rendered = array();
 
@@ -56,13 +59,10 @@ foreach ($tabs as $name => $tab) {
 
 //echo elgg_view_menu('filter', array('sort_by' => 'priority', 'class' => 'elgg-menu-hz'));
 
-$text_bit = '<li class="event-calendar-filter-menu-show-only">'.elgg_echo('event_calendar:show_only').'</li>';
-
 $menu = <<<__MENU
 <ul class="elgg-menu elgg-menu-filter elgg-menu-hz elgg-menu-filter-default">
 	{$tab_rendered['open']}
 	{$tab_rendered['all']}
-	$text_bit
 	{$tab_rendered['mine']}
 	{$tab_rendered['friend']}
 </ul>

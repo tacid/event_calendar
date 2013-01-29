@@ -11,11 +11,17 @@
  * 
  */
 
+elgg_load_library('elgg:event_calendar');
+
 $event = $vars['entity'];
 $full = elgg_extract('full_view', $vars, FALSE);
 
 if ($full) {
 	$body = elgg_view('event_calendar/strapline',$vars);
+	if ($event->web_conference) {
+		$body .= '<br />';
+		$body .= elgg_view('event_calendar/conference_button',array('event'=>$event));
+	}
 	$event_items = event_calendar_get_formatted_full_items($event);
 	$body .= '<br />';
 	
@@ -53,9 +59,17 @@ if ($full) {
 	} else {
 		echo '<div class="elgg-output">'.$event->description.'</div>';
 	}
+	if ($vars['light_box'] == TRUE) {
+		$event_calendar_add_users = elgg_get_plugin_setting('add_users', 'event_calendar');
+		if ($event_calendar_add_users == 'yes') {
+			$url =  "event_calendar/manage_users/$event->guid";
+			echo '<p>'.elgg_view('output/url',array('text'=> elgg_echo('event_calendar:manage_users:breadcrumb'), 'href'=>$url)).'</p>';
+		}
+	}
 	if (elgg_get_plugin_setting('add_to_group_calendar', 'event_calendar') == 'yes') {
 		echo elgg_view('event_calendar/forms/add_to_group',array('event' => $event));
 	}
+	
 } else {
 	
 	$time_bit = event_calendar_get_formatted_time($event);

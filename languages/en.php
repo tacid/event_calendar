@@ -2,7 +2,7 @@
 
 	$english = array(
 	
-	'item:object:event_calendar' => "Event calendar",
+	'item:object:event_calendar' => "Calendar",
 	'tag_names:event_tags' => "Tags",
 	'event_calendar:optional' => "Optional.",
 	'event_calendar:required' => "Required.",
@@ -15,9 +15,9 @@
 		."You can click on the calendar icons to set the start and end dates.",
 	'event_calendar:title_label' => "Title",
 	'event_calendar:title_description' => "One to four words",
-	'event_calendar:brief_description_label' => "Brief description",
+	'event_calendar:brief_description_label' => "Description",
 	'event_calendar:brief_description_description' => "A short phrase.",
-	'event_calendar:venue_label' => "Venue",
+	'event_calendar:venue_label' => "Where",
 	'event_calendar:venue_description' => "Where will this event be held?",
 	'event_calendar:start_date_label' => "Start date",
 	'event_calendar:start_date_description'	=> "When will this event start?",
@@ -44,15 +44,15 @@
 	'event_calendar:manage_event_error' => "Error: There was an error in saving your event. "
 			."Please make sure that you have provided the required fields.",
 	'event_calendar:error_nosuchevent' => "Error: there is no such event.",
-	'event_calendar:show_events_title' => "Event calendar",
+	'event_calendar:show_events_title' => "Calendar",
 	'event_calendar:day_label' => "Day",
 	'event_calendar:week_label' => "Week",
 	'event_calendar:month_label' => "Month",
 	'event_calendar:group' => "Group calendar",
 	'event_calendar:new' => "Add event",
-	'event_calendar:submit' => "Submit",
+	'event_calendar:submit' => "Save and Continue",
 	'event_calendar:cancel' => "Cancel",
-	'event_calendar:widget_title' => "Event calendar",
+	'event_calendar:widget_title' => "Calendar",
 	'event_calendar:widget:description' => "Displays your events.",
 	'event_calendar:num_display' => "Number of events to display",
 	'event_calendar:events_type' => "Events to display",
@@ -65,8 +65,6 @@
 	'event_calendar:view_link' => "View this event",
 	'event_calendar:edit_link' => "Edit this event",
 	'event_calendar:delete_link' => "Delete this event",
-	'event_calendar:delete_confirm_title' => "Confirm event deletion",
-	'event_calendar:delete_confirm_description' => "Are you sure that you want to delete this event (\"%s\")? This action cannot be undone.",
 	'event_calendar:delete_response' => "This event has been deleted.",
 	'event_calendar:error_delete' => "This event does not exist or you do not have the right to delete it.",
 	'event_calendar:delete_cancel_response' => "Event delete cancelled.",
@@ -120,13 +118,13 @@
 	'event_calendar:region_description' => "Select the region that this event will be held in.",
 	'event_calendar:settings:type_display:title' => "Add event type to events",
 	'event_calendar:settings:type_list:title' => "List of event types (one per line)",
-	'event_calendar:type_label' => "Type of event",
+	'event_calendar:type_label' => "Type",
 	'event_calendar:type_description' => "Select the type of event.",
 	'event_calendar:all' => "All",
 	'event_calendar:region_filter_by_label' => "Filter by region: ",
 	'event_calendar:settings:first_date:title' => "First allowable date (in YYYY-MM-DD format)",
 	'event_calendar:settings:last_date:title' => "Last allowable date (in YYYY-MM-DD format)",
-	'event_calendar:enable_event_calendar' => "Enable group event calendar",
+	'event_calendar:enable_event_calendar' => "Enable group calendar",
 	'event_calendar:no_events_found' => "No events found.",
 	'event_calendar:mine' => "Mine",
 	'event_calendar:feature' => "Feature",
@@ -253,9 +251,12 @@ You can manage calendar requests for this event here:
 	'event_calendar:personal_manage:closed' => "closed",
 	'event_calendar:personal_manage:private' => "private",
 	'event_calendar:personal_manage:by_event' => "by event",
-	'event_calendar:personal_manage:label' => "Calendar permission",
+	'event_calendar:personal_manage:label' => "Personal calendars",
 	'event_calendar:personal_manage:description' => "Determines whether people can add this event to their calendars (open), "
 			."need to apply to do so (closed) or have no option at all (private - so only you or a site admin can add the event to calendars).",
+	'event_calendar:personal_manage:by_event:open' => "Open. People can freely add this event to their personal calendars.",
+	'event_calendar:personal_manage:by_event:closed' => "Closed. People can request to add this event to their personal calendars. You can review and approve requests.",
+	'event_calendar:personal_manage:by_event:private' => "Private. You or another event administrator must add this event to personal calendars. There is no way for other users to add or request this event.",
 			
 	'event_calendar:settings:full_calendar:title' => "Support full calendar",
 	'event_calendar:modify_full_calendar:error' => "Error: could not modify full calendar",
@@ -264,6 +265,80 @@ You can manage calendar requests for this event here:
 	'event_calendar:settings:timeformat:title' => "Time format",
 	'event_calendar:time_format:12hour' => "12 hour (am/pm)",
 	'event_calendar:time_format:24hour' => "24 hour",
+	'event_calendar:all_day_label' => "All-day event",
+	'event_calendar:repeat_interval_label' => "Repeat every",
+	'event_calendar:repeat_weeks' => "week(s)",
+	'event_calendar:on_these_days' => "on these days:",
+	'event_calendar:day_abbrev:monday' => "M",
+	'event_calendar:day_abbrev:tuesday' => "T",
+	'event_calendar:day_abbrev:wednesday' => "W",
+	'event_calendar:day_abbrev:thursday' => "T",
+	'event_calendar:day_abbrev:friday' => "F",
+	'event_calendar:day_abbrev:saturday' => "S",
+	'event_calendar:day_abbrev:sunday' => "S",
+	'event_calendar:dow:full:monday' => "Monday",
+	'event_calendar:dow:full:tuesday' => "Tuesday",
+	'event_calendar:dow:full:wednesday' => "Wednesday",
+	'event_calendar:dow:full:thursday' => "Thursday",
+	'event_calendar:dow:full:friday' => "Friday",
+	'event_calendar:dow:full:saturday' => "Saturday",
+	'event_calendar:dow:full:sunday' => "Sunday",
+	'event_calendar:schedule_type:poll' => "Create poll asking invitees about day/time",
+	'event_calendar:schedule_type:fixed' => "Set day/time",
+	'elgg_calendar:send_reminder_label' => "Send reminder",
+	'elgg_calendar:send_reminder_before' => "before",
+	'event_calendar:interval:minute' => "minute(s)",
+	'event_calendar:interval:hour' => "hour(s)",
+	'event_calendar:interval:day' => "day(s)",
+	'event_calendar:site_calendar' => "Site-wide calendar",
+	'event_calendar:calendar_label' => "Calendar",
+	'event_calendar:calendar_description' => "Calendar for this event.",
+	'event_calendar:are_you_sure' => "Are you sure about this change?",
+	'event_calendar:basic:header' => "Basic info",
+	'event_calendar:schedule:header' => "Schedule",
+	'event_calendar:permissions:header' => "Permissions",
+	'event_calendar:read_access' => "Read access",
+	'event_calendar:web_conference_label' => "Include a web conference for this event.",
+	'event_calendar:share_ownership:label' => "Share ownership of this event",
+	'event_calendar:share_ownership:description' => "Allow the following people to edit or delete this event, invite participants, etc.",
+	'event_calendar:settings:fewer_fields:title' => "Hide fees, contact, organiser and long description fields",
+	'event_calendar:settings:restricted_times:title' => "Restricted time to between 6am and 9pm (6:00 and 21:00)",
+	'event_calendar:add_event' => "Add event",
+	'event_calendar:schedule_event' => "Schedule event",
+	'event_calendar:list_polls' => "List event polls",
+	'event_calendar:edit_form:error:missing_title' => "Error: please supply the missing title.",
+	'event_calendar:repeated_event:week_interval' => "every %s weeks.",
+	'event_calendar:repeated_event:week_single' => "every week.",
+	'event_calendar:repeated_event:format' => "Starting on %s and repeated on %s",
+	'event_calendar:settings:repeated_events:title' => "Allow repeated events (currently only works properly in full calendar mode)",
+	'event_calendar:settings:reminders:title' => "Allow sending reminders",
+	'event_calendar:reminder:subject' => "Reminder for event: %s",
+	'event_calendar:reminder:body' => "The event
+
+%s 
+
+takes place at
+
+%s.
+	
+You can visit the event page here:
+%s
+	",
+			
+	/**
+	 * BBB support
+	*/
+			
+	'event_calendar:bbb_server_url' => "Big Blue Button server URL (must end with slash)",
+	'event_calendar:bbb_security_salt' => "Big Blue Button security salt",
+	'event_calendar:bbb_create_error' => "Error: unable to create BBB conference, message was: %s",
+	'event_calendar:conference_create_error' => "Error: unable to create web conference.",
+	'event_calendar:bbb_settings_error' => "Error: must set conference URL and salt in plugin settings",
+	'event_calendar:couldnotjoin' => "Error: unable to join conference.",
+	'event_calendar:join_conf_button' => "Join conference",
+			
+	'event_calendar:poll_suffix' => "(poll)",
+	'event_calendar:resend_poll_invitation' => "Do you want to alert poll invitees that the options have changed?",
 		
 	/**
 	 * Event calendar river
