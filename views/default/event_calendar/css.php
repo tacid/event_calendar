@@ -3,7 +3,7 @@
 //$highlight_colour = '#478787';
 
 $background_colour = '#F5F5F5';
-$highlight_colour = '#3874B7';
+$highlight_colour = '#D73537';
 ?>
 
 #calendarmenucontainer {
