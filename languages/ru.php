@@ -65,8 +65,6 @@
 	'event_calendar:view_link' => "Просмотреть событие",
 	'event_calendar:edit_link' => "Изменить событие",
 	'event_calendar:delete_link' => "Удалить событие",
-	'event_calendar:delete_confirm_title' => "Подтверждение удаление события",
-	'event_calendar:delete_confirm_description' => "Вы уверены что хотите удалить событие (\"%s\")? Это действие не может быть отменено.",
 	'event_calendar:delete_response' => "Событие было удалено.",
 	'event_calendar:error_delete' => "Такого события не существует или у вас нет прав на его удаление.",
 	'event_calendar:delete_cancel_response' => "Удаление события отменено.",
