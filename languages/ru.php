@@ -256,14 +256,91 @@ You can manage calendar requests for this event here:
 	'event_calendar:personal_manage:label' => "Доступ к календарю",
 	'event_calendar:personal_manage:description' => "Определяет, может ли пользователь добавить это событие в свой календарях (открытый),"
 			."требуется разрешние (закрытый) или не имеет возможности добавить вообще (приватное - такм образом только вы или сайт-админ могут добавять событие в календари).",
+	'event_calendar:personal_manage:by_event:open' => "Open. People can freely add this event to their personal calendars.",
+	'event_calendar:personal_manage:by_event:closed' => "Closed. People can request to add this event to their personal calendars. You can review and approve requests.",
+	'event_calendar:personal_manage:by_event:private' => "Private. You or another event administrator must add this event to personal calendars. There is no way for other users to add or request this event.",
 			
 	'event_calendar:settings:full_calendar:title' => "Поддержка полного календаря",
 	'event_calendar:modify_full_calendar:error' => "Ошибка: не могу изменить весь календарь",
-	'event_calendar:from_label' => "С:",
-	'event_calendar:to_label' => "По:",
+	'event_calendar:from_label' => "С: ",
+	'event_calendar:to_label' => "По: ",
 	'event_calendar:settings:timeformat:title' => "Формат времени",
 	'event_calendar:time_format:12hour' => "12 часовой (am/pm)",
 	'event_calendar:time_format:24hour' => "24 часовой",
+	'event_calendar:all_day_label' => "Весь день",
+	'event_calendar:repeat_interval_label' => "Повторять каждые",
+	'event_calendar:repeat_weeks' => "неделю(и)",
+	'event_calendar:on_these_days' => "в эти дни:",
+	'event_calendar:day_abbrev:monday' => "П",
+	'event_calendar:day_abbrev:tuesday' => "В",
+	'event_calendar:day_abbrev:wednesday' => "С",
+	'event_calendar:day_abbrev:thursday' => "Ч",
+	'event_calendar:day_abbrev:friday' => "П",
+	'event_calendar:day_abbrev:saturday' => "С",
+	'event_calendar:day_abbrev:sunday' => "В",
+	'event_calendar:dow:full:monday' => "Понедельник",
+	'event_calendar:dow:full:tuesday' => "Вторник",
+	'event_calendar:dow:full:wednesday' => "Среда",
+	'event_calendar:dow:full:thursday' => "Четверг",
+	'event_calendar:dow:full:friday' => "Пятница",
+	'event_calendar:dow:full:saturday' => "Суббота",
+	'event_calendar:dow:full:sunday' => "Воскресенье",
+	'event_calendar:schedule_type:poll' => "Сделать опрос приглашенных про день/время",
+	'event_calendar:schedule_type:fixed' => "Установить день/время",
+	'elgg_calendar:send_reminder_label' => "Отправить напоминание",
+	'elgg_calendar:send_reminder_before' => "перед",
+	'event_calendar:interval:minute' => "менут",
+	'event_calendar:interval:hour' => "часов",
+	'event_calendar:interval:day' => "дней",
+	'event_calendar:site_calendar' => "Календарь сайта",
+	'event_calendar:calendar_label' => "Календарь",
+	'event_calendar:calendar_description' => "Календарь для этого событияCalendar for this event.",
+	'event_calendar:are_you_sure' => "Вы уверены в этом изменении?",
+	'event_calendar:basic:header' => "Общая информация",
+	'event_calendar:schedule:header' => "Расписание",
+	'event_calendar:permissions:header' => "Разрешения",
+	'event_calendar:read_access' => "Доступ на чтение ",
+	'event_calendar:web_conference_label' => "Подключить веб-конференцию для этого события",
+	'event_calendar:share_ownership:label' => "Добавить еще владельцев этого события",
+	'event_calendar:share_ownership:description' => "Разрешить следующим людям редактировать или удалять это событие, приглашать участников",
+	'event_calendar:settings:fewer_fields:title' => "Hide fees, contact, organiser and long description fields",
+	'event_calendar:settings:restricted_times:title' => "Restricted time to between 6am and 9pm (6:00 and 21:00)",
+	'event_calendar:add_event' => "Добавить событие",
+	'event_calendar:schedule_event' => "Расписание события",
+	'event_calendar:list_polls' => "Показать голосования",
+	'event_calendar:edit_form:error:missing_title' => "Ошибка: укажите название",
+	'event_calendar:repeated_event:week_interval' => "каждые %s недели.",
+	'event_calendar:repeated_event:week_single' => "каждую неделю.",
+	'event_calendar:repeated_event:format' => "Начинать с %s и продолжать по %s",
+	'event_calendar:settings:repeated_events:title' => "Разрешить повторяющиеся события (сейчас работает нормально только в режиме полного календаря)",
+	'event_calendar:settings:reminders:title' => "Разрешить отправку напоминаний",
+	'event_calendar:reminder:subject' => "Напоминане о событии: %s",
+	'event_calendar:reminder:body' => "Событие
+
+%s 
+
+будет проходть в 
+
+%s.
+	
+Вы можете просмотреть страницу события тут:
+%s
+	",
+			
+	/**
+	 * BBB support
+	*/
+			
+	'event_calendar:bbb_server_url' => "Big Blue Button server URL (must end with slash)",
+	'event_calendar:bbb_security_salt' => "Big Blue Button security salt",
+	'event_calendar:bbb_create_error' => "Error: unable to create BBB conference, message was: %s",
+	'event_calendar:conference_create_error' => "Error: unable to create web conference.",
+	'event_calendar:bbb_settings_error' => "Error: must set conference URL and salt in plugin settings",
+	'event_calendar:couldnotjoin' => "Error: unable to join conference.",
+	'event_calendar:join_conf_button' => "Join conference",
+			
+	'event_calendar:poll_suffix' => "(опрос)",
+	'event_calendar:resend_poll_invitation' => "Do you want to alert poll invitees that the options have changed?",
 		
 	/**
 	 * Event calendar river
