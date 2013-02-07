@@ -7,7 +7,7 @@
  *
  */
 
-header("Content-Type: text/calendar");
+header("Content-Type: text/calendar; charset=UTF-8");
 header("Content-Disposition: inline; filename=\"calendar.ics\"");
 ?>
 BEGIN:VCALENDAR
