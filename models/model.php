@@ -105,12 +105,11 @@ function event_calendar_set_event_from_form($event_guid,$group_guid) {
 		$start_date_text = gmdate("Y-m-d",$start_date);
 		//$event->munged_start_date_string = $start_date_text." ".date_default_timezone_get();*/
 		
-		// TODO: is the timezone bit necessary?
-		$event->start_date = strtotime($start_date_text." GMT");
+		$event->start_date = strtotime($start_date_text." ".date_default_timezone_get());
 		$end_date_text = trim(get_input('end_date',''));
 		//$event->original_end_date = get_input('end_date');
 		if ($end_date_text) {	
-			$event->end_date = strtotime($end_date_text." GMT");
+			$event->end_date = strtotime($end_date_text." ".date_default_timezone_get());
 			//$event->munged_end_date_string = $end_date_text." ".date_default_timezone_get();
 		} else {
 			$event->end_date = '';
@@ -1222,6 +1221,22 @@ function event_calendar_format_time($date,$time1,$time2='') {
 	} else {
 		return $date;
 	}
+}
+
+// Format text fileds to iCalendar format
+function event_calendar_format_text($text) {
+        // make sure that we are using Unix line endings
+        $text = str_replace("\r\n","\n",$text);
+        $text = str_replace("\r","\n",$text);
+
+        // now convert to icalendar format
+        $text = str_replace("\n","\r\n",$text);
+        $text = wordwrap($text,75,"\r\n ",TRUE);
+
+        // escaping ,;\ chars http://www.ietf.org/rfc/rfc2445.txt?p=4.3.11
+        $text = preg_replace('/([^\\\])([,\\\;])/i','$1\\\\$2',$text);
+
+        return $text;
 }
 
 function event_calender_get_gmt_from_server_time($server_time) {

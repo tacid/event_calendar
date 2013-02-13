@@ -9,6 +9,7 @@
 
 header("Content-Type: text/calendar; charset=UTF-8");
 header("Content-Disposition: inline; filename=\"calendar.ics\"");
+
 ?>
 BEGIN:VCALENDAR
 VERSION:2.0

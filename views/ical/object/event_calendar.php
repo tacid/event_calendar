@@ -1,19 +1,13 @@
 <?php 
 $event = $vars['entity'];
 if ($event->organizer) {
-	$organizer = "\nORGANIZER;CN={$event->organizer}\n";
+	$organizer = "\r\nORGANIZER;CN={$event->organizer}\r\n";
 } else {
 	$organizer = '';
 }
 
 if ($event->description) {
-	// make sure that we are using Unix line endings
-	$description = str_replace("\r\n","\n",$event->description);
-	$description = str_replace("\r","\n",$description);
-	
-	// now convert to icalendar format
-	$description = str_replace("\n",'\n',$description);
-	$description = wordwrap($description,75,"\r\n ",TRUE);
+	$description = event_calendar_format_text($event->description);
 } else {
 	$description = '';
 }
@@ -33,11 +27,11 @@ DTSTART:<?php echo date("Ymd\THis\Z", $event->start_date);  ?>
 
 DTEND:<?php echo date("Ymd\THis\Z", $event->real_end_time);  ?>
 
-SUMMARY:<?php echo $event->title;  ?>
+SUMMARY:<?php echo event_calendar_format_text($event->title);  ?>
 
 DESCRIPTION:<?php echo $description;  ?>
 
-LOCATION:<?php echo $event->venue;  ?><?php echo $organizer;  ?>
+LOCATION:<?php echo event_calendar_format_text($event->venue);  ?><?php echo $organizer;  ?>
 
 CATEGORIES:<?php implode(",",$event->tags);  ?>
 
