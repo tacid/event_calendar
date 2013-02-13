@@ -11,6 +11,8 @@ if ($event->description) {
 } else {
 	$description = '';
 }
+// DTSTART and DTEND should be in UTC timezone
+date_default_timezone_set('UTC');
 ?>
 BEGIN:VEVENT
 UID:<?php echo elgg_get_site_url().'event_calendar/view/'.$event->guid; ?>
