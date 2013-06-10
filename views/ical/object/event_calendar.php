@@ -35,6 +35,8 @@ DESCRIPTION:<?php echo $description;  ?>
 
 LOCATION:<?php echo event_calendar_format_text($event->venue);  ?><?php echo $organizer;  ?>
 
+<?php if(is_array($event->tags)){ ?>
 CATEGORIES:<?php implode(",",$event->tags);  ?>
 
+<?php } ?>
 END:VEVENT
