@@ -6,7 +6,7 @@
 	'tag_names:event_tags' => "Теги",
 	'event_calendar:optional' => "Опционально.",
 	'event_calendar:required' => "Обязательно.",
-	'event_calendar:new_event' => "Новое событие",
+	'event_calendar:new_event' => 'Новое событие',
 	'event_calendar:no_such_event_edit_error' => "Ошибка: Нет такого события или у вас нет прав на его редактирование.",
 	'event_calendar:add_event_title' => "Добавить событие",
 	'event_calendar:manage_event_title' => "Изменить событие",
