@@ -137,6 +137,11 @@ function event_calendar_set_event_from_form($event_guid,$group_guid) {
 				// This allows sorting by date *and* time.
 				$event->start_date += $event->start_time*60;
 			}
+			if (is_numeric($event->end_date) && is_numeric($event->end_time)) {
+				// Set start date to the Unix start time, if set.
+				// This allows sorting by date *and* time.
+				$event->end_date += $event->end_time*60;
+			}
 		}
 	}
 	if ($event_calendar_spots_display == 'yes') {
