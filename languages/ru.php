@@ -266,6 +266,7 @@
 	'event_calendar:time_format:12hour' => "12 часовой (am/pm)",
 	'event_calendar:time_format:24hour' => "24 часовой",
 	'event_calendar:all_day_label' => "Весь день",
+	'event_calendar:all_day_bit' => "(весь день)",
 	'event_calendar:repeat_interval_label' => "Повторять каждые",
 	'event_calendar:repeat_weeks' => "неделю(и)",
 	'event_calendar:on_these_days' => "в эти дни:",

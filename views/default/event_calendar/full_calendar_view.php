@@ -1,7 +1,7 @@
 <?php
 elgg_load_js('elgg.full_calendar');
-
-$timeformat = elgg_get_plugin_setting('timeformat', 'event_calendar') == 24 ? 'H(:mm)' : 'h(:mm)t';
+elgg_load_js('lightbox');
+elgg_load_css('lightbox');
 
 // TODO: is there an easy way to avoid embedding JS?
 ?>
@@ -11,8 +11,13 @@ var goToDateFlag = 0;
 
 handleEventClick = function(event) {
     if (event.url) {
-        window.location.href = event.url;
-        event.preventDefault();
+        if (event.is_event_poll) {
+        	window.location.href = event.url;
+        } else {
+        	//window.location.href = event.url;
+        	$.fancybox({'href':event.url});
+        }
+        return false;
     }
 };
 
@@ -35,7 +40,7 @@ handleDayClick = function(date,allDay,jsEvent,view) {
 	$('.fc-widget-content').removeClass('event-calendar-date-selected');
 	var current_iso = $('#event-calendar-selected-date').val();
 	if (current_iso == iso) {
-		// deselect		
+		// deselect
 		$('#event-calendar-selected-date').val("");
 		$('.elgg-menu-item-event-calendar-0add').find('a').attr('href',url+'event_calendar/add/'+group_guid);
 		$('.event-calendar-button-add').attr('href',url+'event_calendar/add/'+group_guid);
@@ -45,13 +50,13 @@ handleDayClick = function(date,allDay,jsEvent,view) {
 		$('.elgg-menu-item-event-calendar-0add').find('a').attr('href',url+'event_calendar/add/'+group_guid+'/'+iso);
 		$('.event-calendar-button-add').attr('href',url+'event_calendar/add/'+group_guid+'/'+iso);
 		$('.elgg-menu-item-event-calendar-1schedule').find('a').attr('href',url+'event_calendar/schedule/'+group_guid+'/'+iso);
-		
+
 		$(this).addClass('event-calendar-date-selected');
 	}
 }
 
 handleEventDrop = function(event,dayDelta,minuteDelta,allDay,revertFunc) {
-	
+
 	if (!event.is_event_poll && !confirm("<?php echo elgg_echo('event_calendar:are_you_sure'); ?>")) {
         revertFunc();
     } else {
@@ -103,8 +108,9 @@ handleGetEvents = function(start, end, callback) {
 	var start_date = getISODate(start);
 	var end_date = getISODate(end);
 	var url = "event_calendar/get_fullcalendar_events/"+start_date+"/"+end_date+"/<?php echo $vars['filter']; ?>/<?php echo $vars['group_guid']; ?>";
-	elgg.getJSON(url, {success: 
+	elgg.getJSON(url, {success:
 		function(events) {
+		  //alert(JSON.stringify(events));
 			callback(events);
 		}
 	});
@@ -140,61 +146,29 @@ handleViewDisplay = function(view) {
 		//$('.fc-widget-content').removeClass('event-calendar-date-selected');
 		//$(".fc-widget-content[data-date='"+ciso+"']").addClass('event-calendar-date-selected');
 	}
-	
+
 	//$(".fc-widget-content[data-date='20120105']")
 }
 
-fullcalendarInit = function() {	
-	
-	var loadFullCalendar = function() {
-		var locale = $.datepicker.regional[elgg.get_language()];
-		if (!locale) {
-			locale = $.datepicker.regional[''];
-		}
-		$('#calendar').fullCalendar({
-			header: {
-				left: 'prev,next today',
-				center: 'title',
-				right: 'month,agendaWeek,agendaDay'
-			},
-			month: <?php echo date('n',strtotime($vars['start_date']))-1; ?>,
-			ignoreTimezone: true,
-			editable: true,
-			slotMinutes: 15,
-			eventRender: handleEventRender,
-			eventDrop: handleEventDrop,
-			eventClick: handleEventClick,
-			dayClick: handleDayClick,
-			events: handleGetEvents,
-			viewDisplay: handleViewDisplay,
-			
-			isRTL:  locale.isRTL,
-			firstDay: locale.firstDay,
-			monthNames: locale.monthNames,
-			monthNamesShort: locale.monthNamesShort,
-			dayNames: locale.dayNames,
-			dayNamesShort: locale.dayNamesShort,
-			buttonText: {
-				today: locale.currentText,
-				month: elgg.echo('event_calendar:month_label'),
-				week: elgg.echo('event_calendar:week_label'),
-				day: elgg.echo('event_calendar:day_label')
-			},
-			timeFormat: "<?php echo $timeformat; ?>",
-		});
-	}
-	
-	elgg.get({
-		url: elgg.config.wwwroot + 'vendors/jquery/i18n/jquery.ui.datepicker-'+ elgg.get_language() +'.js',
-		dataType: "script",
-		cache: true,
-		success: loadFullCalendar,
-		error: loadFullCalendar, // english language is already loaded.
+$(document).ready(function() {
+	$('#calendar').fullCalendar({
+		header: {
+			left: 'prev,next today',
+			center: 'title',
+			right: 'month,agendaWeek,agendaDay'
+		},
+		month: <?php echo date('n',strtotime($vars['start_date']))-1; ?>,
+		ignoreTimezone: true,
+		editable: true,
+		slotMinutes: 15,
+		eventRender: handleEventRender,
+		eventDrop: handleEventDrop,
+		eventClick: handleEventClick,
+		dayClick: handleDayClick,
+		events: handleGetEvents,
+		viewDisplay: handleViewDisplay
 	});
-}
-
-elgg.register_hook_handler('init', 'system', fullcalendarInit);
-
+});
 </script>
 <div id='calendar'></div>
 <input type="hidden" id="event-calendar-selected-date" />
